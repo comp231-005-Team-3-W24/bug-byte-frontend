@@ -1,5 +1,5 @@
 export type User = {
-  _id: string;
+  id: string;
   userName: string;
 };
 
@@ -21,7 +21,7 @@ export type AuthResponse = {
 };
 
 export type Project = {
-  _id: string;
+  id: string;
   name: string;
   description: string;
   company: string;

@@ -1,3 +1,4 @@
+import ProjectCard from "../components/ProjectCard";
 import { projects } from "../db";
 
 export default function Projects() {
@@ -6,11 +7,7 @@ export default function Projects() {
       <h1>Projects Page</h1>
       <div>
         {projects.map((project) => (
-          <div>
-            <h3>{project.name}</h3>
-            <p>{project.description}</p>
-            <button onClick={() => alert(project._id)}>Details</button>
-          </div>
+          <ProjectCard key={project.id} project={project}/>
         ))}
       </div>
     </>
