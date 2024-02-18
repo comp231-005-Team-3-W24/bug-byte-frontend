@@ -1,0 +1,35 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav div {
+  width: 33%;
+}
+
+nav h1 {
+  text-align: center;
+  width: 33%;
+}
+
+img {
+  padding: 15px;
+  width: 100px;
+  height: 100px;
+}
+
+ul {
+  list-style-type: none;
+  width: 33%;
+}
+
+nav ul {
+  display: flex;
+  justify-content: end;
+}
+
+nav ul li {
+  padding: 10px;
+  margin-right: 20px;
+}

@@ -1,6 +1,9 @@
 export type User = {
   id: string;
-  userName: string;
+  name: string;
+  email: string;
+  accessToken?: string;
+  role: "tester" | "developer" | "stakeholder" | "admin";
 };
 
 export type LoginDTO = {
@@ -13,11 +16,6 @@ export type RegisterDTO = {
   email: string;
   password: string;
   role: "tester" | "developer" | "stakeholder" | "admin";
-};
-
-export type AuthResponse = {
-  accessToken: string;
-  role: string;
 };
 
 export type Project = {
