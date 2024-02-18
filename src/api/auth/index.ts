@@ -1,20 +1,23 @@
-import { AuthResponse, LoginDTO, RegisterDTO } from "../../types";
+import { LoginDTO, RegisterDTO, User } from "../../types";
 
-const mockAuthResponse: AuthResponse = {
+const mockUserResponse: User = {
+  id: "dsgbf2349023j",
+  name: "John Doe",
+  email: "email@mail.com",
   accessToken: "sklhfshglkdsgdf",
-  role: "user",
+  role: "tester",
 };
 
-export function loginRequest(data: LoginDTO): Promise<AuthResponse> {
+export function loginRequest(data: LoginDTO): Promise<User> {
   console.log(data);
   return new Promise((resolve, reject) => {
-    resolve(mockAuthResponse), reject("An error occurred");
+    resolve(mockUserResponse), reject("An error occurred");
   });
 }
 
-export function registerRequest(data: RegisterDTO): Promise<AuthResponse> {
+export function registerRequest(data: RegisterDTO): Promise<User> {
   console.log(data);
   return new Promise((resolve, reject) => {
-    resolve(mockAuthResponse), reject("An error occurred");
+    resolve(mockUserResponse), reject("An error occurred");
   });
 }
