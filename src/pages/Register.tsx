@@ -1,21 +1,32 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../hooks/useAuth';
+import { RegisterDTO } from '../types';
 
 const Register: React.FC = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const { register } = useAuth();
+  const [registerData, setRegisterData] = useState<RegisterDTO>({
+    name: '',
+    email: '',
+    password: '',
+    role: 'tester',
+  });
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleRegister = (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      setError('Passwords do not match');
-    } else {
-      console.log('Registration successful');
-      navigate('/login');
+    try {
+      await register(registerData);
+      navigate('/');
+    } catch (error) {
+      setError('Registration failed');
     }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setRegisterData({ ...registerData, [name]: value });
   };
 
   return (
@@ -24,12 +35,23 @@ const Register: React.FC = () => {
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <form onSubmit={handleRegister}>
         <div>
-          <label htmlFor="username">Username:</label>
+          <label htmlFor="name">Name:</label>
           <input
             type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            id="name"
+            name="name"
+            value={registerData.name}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={registerData.email}
+            onChange={handleChange}
           />
         </div>
         <div>
@@ -37,18 +59,19 @@ const Register: React.FC = () => {
           <input
             type="password"
             id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            name="password"
+            value={registerData.password}
+            onChange={handleChange}
           />
         </div>
         <div>
-          <label htmlFor="confirmPassword">Confirm Password:</label>
-          <input
-            type="password"
-            id="confirmPassword"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
+          <label htmlFor="role">Role:</label>
+          <select id="role" name="role" value={registerData.role} onChange={handleChange}>
+            <option value="tester">Tester</option>
+            <option value="developer">Developer</option>
+            <option value="stakeholder">Stakeholder</option>
+            <option value="admin">Admin</option>
+          </select>
         </div>
         <button type="submit">Register</button>
       </form>
