@@ -18,8 +18,8 @@ export const projects: Project[] = [
     description: "First Project",
     company: "Company A",
     users: [
-      { id: "1", userName: "Amell" },
-      { id: "1", userName: "Leonardo" },
+      { id: "1", name: "Amell", email: "amell@mail.com", role: "tester" },
+      { id: "2", name: "Leonardo", email: "leo@mail.com", role: "admin" },
     ],
     reportsId: ["1"],
   },
@@ -29,8 +29,8 @@ export const projects: Project[] = [
     description: "Second Project",
     company: "Company B",
     users: [
-      { id: "1", userName: "Amell" },
-      { id: "1", userName: "Leonardo" },
+      { id: "1", name: "Amell", email: "amell@mail.com", role: "tester" },
+      { id: "2", name: "Leonardo", email: "leo@mail.com", role: "admin" },
     ],
     reportsId: ["2"],
   },
@@ -40,8 +40,8 @@ export const projects: Project[] = [
     description: "Third Project",
     company: "Company C",
     users: [
-      { id: "1", userName: "Amell" },
-      { id: "1", userName: "Leonardo" },
+      { id: "1", name: "Amell", email: "amell@mail.com", role: "tester" },
+      { id: "2", name: "Leonardo", email: "leo@mail.com", role: "admin" },
     ],
     reportsId: ["1"],
   },
