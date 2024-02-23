@@ -21,6 +21,7 @@ export const AuthContext = createContext<AuthContextProps>({
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [isReady, setIsReady] = useState(false);
   const { getItem, setItem, removeItem } = useLocalStorage();
 
   useEffect(() => {
@@ -28,6 +29,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     if (currentUserStr) {
       const currentUser: User = JSON.parse(currentUserStr);
       setUser(currentUser);
+      setIsReady(true);
     } else {
       setUser(null);
     }
@@ -55,7 +57,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <AuthContext.Provider value={{ user, setUser, login, register, logout }}>
-      {children}
+      {isReady ? children : null}
     </AuthContext.Provider>
   );
 };

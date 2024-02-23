@@ -5,7 +5,7 @@ const mockUserResponse: User = {
   name: "John Doe",
   email: "email@mail.com",
   accessToken: "sklhfshglkdsgdf",
-  role: "tester",
+  role: "admin",
 };
 
 export function loginRequest(data: LoginDTO): Promise<User> {

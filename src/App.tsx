@@ -6,6 +6,8 @@ import Login from "./pages/Login";
 import ProjectDetails from "./pages/ProjectDetails";
 import Projects from "./pages/Projects";
 import Register from "./pages/Register";
+import Users from "./pages/Users";
+import { UserDetails } from "./pages/UserDetails";
 
 function App() {
   return (
@@ -28,6 +30,22 @@ function App() {
             element={
               <ProtectedRoute>
                 <ProjectDetails />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/users"
+            element={
+              <ProtectedRoute>
+                <Users />
+              </ProtectedRoute>
+            }
+          />
+           <Route
+            path="/users/:id"
+            element={
+              <ProtectedRoute>
+                <UserDetails />
               </ProtectedRoute>
             }
           />
