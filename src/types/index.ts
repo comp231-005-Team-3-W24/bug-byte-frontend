@@ -23,6 +23,6 @@ export type Project = {
   name: string;
   description: string;
   company: string;
-  users: User[];
+  usersId: string[];
   reportsId: string[];
 };

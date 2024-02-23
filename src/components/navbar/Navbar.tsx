@@ -14,8 +14,13 @@ export default function Navbar() {
       <ul>
         {user ? (
           <>
+            {user.role == "admin" && (
+              <li>
+                <Link to="/users">Users</Link>
+              </li>
+            )}
             <li>
-              <Link to="/">My Projects</Link>
+              <Link to="/">Projects</Link>
             </li>
             <li>
               <Link to="/login" onClick={logout}>
