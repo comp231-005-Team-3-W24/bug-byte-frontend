@@ -10,17 +10,22 @@
 //     reports: ["report_id_1", "report_id_2"],
 
 //   };
-import { Project } from "./types";
+import { Project, User } from "./types";
+
+export const mockUsers: User[] = [
+  { id: "1", name: "Leonardo", email: "leonardo@mail.com", role: "tester" },
+  { id: "2", name: "Amell", email: "amell@mail.com", role: "admin" },
+  { id: "3", name: "Yza", email: "yza@mail.com", role: "admin" },
+  { id: "4", name: "Jerick", email: "jerick@mail.com", role: "stakeholder" },
+];
+
 export const projects: Project[] = [
   {
     id: "1",
     name: "Project X",
     description: "First Project",
     company: "Company A",
-    users: [
-      { id: "1", name: "Amell", email: "amell@mail.com", role: "tester" },
-      { id: "2", name: "Leonardo", email: "leo@mail.com", role: "admin" },
-    ],
+    usersId: [mockUsers[0].id, mockUsers[1].id],
     reportsId: ["1"],
   },
   {
@@ -28,10 +33,7 @@ export const projects: Project[] = [
     name: "Project Y",
     description: "Second Project",
     company: "Company B",
-    users: [
-      { id: "1", name: "Amell", email: "amell@mail.com", role: "tester" },
-      { id: "2", name: "Leonardo", email: "leo@mail.com", role: "admin" },
-    ],
+    usersId: [mockUsers[2].id, mockUsers[3].id],
     reportsId: ["2"],
   },
   {
@@ -39,10 +41,7 @@ export const projects: Project[] = [
     name: "Project Z",
     description: "Third Project",
     company: "Company C",
-    users: [
-      { id: "1", name: "Amell", email: "amell@mail.com", role: "tester" },
-      { id: "2", name: "Leonardo", email: "leo@mail.com", role: "admin" },
-    ],
+    usersId: [mockUsers[0].id, mockUsers[2].id],
     reportsId: ["1"],
   },
 ];
