@@ -50,3 +50,64 @@
 //     video: [], // think about format and how to upload/store
 //   },
 // };
+
+const { Schema, model } = require('mongoose');
+
+// Define schema for User entity
+const userSchema = new Schema({
+  name: String,
+  email: String,
+  password: String,
+  projects: [
+    {
+      project_id: String,
+      project_name: String
+    }
+  ],
+  role: String
+});
+
+// Define schema for Project entity
+const projectSchema = new Schema({
+  name: String,
+  description: String,
+  company: String,
+  users: [
+    {
+      user_id: String,
+      user_name: String
+    }
+  ],
+  reports: [String]
+});
+
+// Define schema for Report entity
+const reportSchema = new Schema({
+  description: String,
+  project_id: String,
+  tester: {
+    user_id: String,
+    user_name: String
+  },
+  severity: String,
+  status: String,
+  stakeholder_responsible: {
+    user_id: String,
+    user_name: String
+  },
+  dev_responsible: {
+    user_id: String,
+    user_name: String
+  },
+  media: {
+    image: [String],
+    video: [String]
+  }
+});
+
+// Create models for User, Project, and Report entities
+const User = model('User', userSchema);
+const Project = model('Project', projectSchema);
+const Report = model('Report', reportSchema);
+
+module.exports = { User, Project, Report };
