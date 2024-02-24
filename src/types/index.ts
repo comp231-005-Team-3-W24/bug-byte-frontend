@@ -6,6 +6,17 @@ export type User = {
   role: "tester" | "developer" | "stakeholder" | "admin";
 };
 
+export type BugReportCreateDTO = {
+  description: string;
+  projectId: string;
+  tester: Tester;
+}
+
+type Tester = {
+  id: string;
+  name: string
+};
+
 export type LoginDTO = {
   email: string;
   password: string;
@@ -17,6 +28,8 @@ export type RegisterDTO = {
   password: string;
   role: "tester" | "developer" | "stakeholder" | "admin";
 };
+
+
 
 export type Project = {
   id: string;
