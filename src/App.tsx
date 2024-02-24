@@ -8,6 +8,7 @@ import Projects from "./pages/Projects";
 import Register from "./pages/Register";
 import Users from "./pages/Users";
 import { UserDetails } from "./pages/UserDetails";
+import BugReport from "./pages/BugReport";
 
 function App() {
   return (
@@ -48,7 +49,13 @@ function App() {
                 <UserDetails />
               </ProtectedRoute>
             }
-          />
+            />
+            <Route  path="/bug-report"
+            element={
+              <ProtectedRoute>
+                <BugReport />
+              </ProtectedRoute>
+            } />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
