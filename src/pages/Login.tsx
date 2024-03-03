@@ -17,7 +17,6 @@ import Typography from "@mui/joy/Typography";
 import Stack from "@mui/joy/Stack";
 import DarkModeRoundedIcon from "@mui/icons-material/DarkModeRounded";
 import LightModeRoundedIcon from "@mui/icons-material/LightModeRounded";
-import BadgeRoundedIcon from "@mui/icons-material/BadgeRounded";
 
 interface FormElements extends HTMLFormControlsCollection {
   email: HTMLInputElement;
@@ -126,23 +125,7 @@ const LogIn: React.FC = () => {
             px: 2,
           }}
         >
-          <Box
-            component="header"
-            sx={{
-              py: 3,
-              display: "flex",
-              alignItems: "left",
-              justifyContent: "space-between",
-            }}
-          >
-            <Box sx={{ gap: 2, display: "flex", alignItems: "center" }}>
-              <IconButton variant="soft" color="primary" size="sm">
-                <BadgeRoundedIcon />
-              </IconButton>
-              <img src="../../assets/logo.png" alt="Bug Byte Logo" />
-            </Box>
             <ColorSchemeToggle />
-          </Box>
           <Box
             component="main"
             sx={{
