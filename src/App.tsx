@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./auth/AuthProvider";
 import Navbar from "./components/navbar/Navbar";
 import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
-import Login from "./pages/Login";
+import LogIn from "./pages/Login";
 import ProjectDetails from "./pages/ProjectDetails";
 import Projects from "./pages/Projects";
 import Register from "./pages/Register";
@@ -24,7 +24,7 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<LogIn />} />
           <Route path="/register" element={<Register />} />
           <Route
             path="/project-details/:id"
