@@ -29,10 +29,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     if (currentUserStr) {
       const currentUser: User = JSON.parse(currentUserStr);
       setUser(currentUser);
-      setIsReady(true);
     } else {
       setUser(null);
     }
+    setIsReady(true);
   }, []);
 
   const handleUserLogin = (user: User) => {
