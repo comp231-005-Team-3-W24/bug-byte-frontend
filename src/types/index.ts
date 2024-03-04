@@ -1,8 +1,7 @@
 export type User = {
-  id: string;
+  _id: string;
   name: string;
   email: string;
-  accessToken?: string;
   role: "tester" | "developer" | "stakeholder" | "admin";
 };
 
@@ -10,15 +9,15 @@ export type BugReportCreateDTO = {
   description: string;
   projectId: string;
   tester: Tester;
-}
+};
 
 type Tester = {
   id: string;
-  name: string
+  name: string;
 };
 
 export type LoginDTO = {
-  email: string;
+  name: string;
   password: string;
 };
 
@@ -29,7 +28,10 @@ export type RegisterDTO = {
   role: "tester" | "developer" | "stakeholder" | "admin";
 };
 
-
+export type UserResponse = {
+  role: "tester" | "developer" | "stakeholder" | "admin";
+  token: string;
+};
 
 export type Project = {
   id: string;

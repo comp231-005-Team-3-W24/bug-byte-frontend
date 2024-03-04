@@ -1,11 +1,11 @@
 import React, { createContext, useEffect, useState } from "react";
-import { loginRequest, registerRequest } from "../api/auth";
-import { useLocalStorage } from "../hooks/useLocalStorage";
-import { LoginDTO, RegisterDTO, User } from "../types";
+import { loginRequest, registerRequest } from "../api/users";
+import { LoginDTO, RegisterDTO, UserResponse } from "../types";
+import { getUser, removeUser, setLocalStorage } from "../utils/storage";
 
 interface AuthContextProps {
-  user: User | null;
-  setUser: (user: User | null) => void;
+  user: UserResponse | null;
+  setUser: (user: UserResponse | null) => void;
   login: (data: LoginDTO) => Promise<void>;
   logout: () => void;
   register: (data: RegisterDTO) => Promise<void>;
@@ -20,28 +20,26 @@ export const AuthContext = createContext<AuthContextProps>({
 });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<UserResponse | null>(null);
   const [isReady, setIsReady] = useState(false);
-  const { getItem, setItem, removeItem } = useLocalStorage();
 
   useEffect(() => {
-    const currentUserStr = getItem("user");
-    if (currentUserStr) {
-      const currentUser: User = JSON.parse(currentUserStr);
-      setUser(currentUser);
+    const user: UserResponse | null = getUser();
+    if (user.role && user.token) {
+      setUser(user);
     } else {
       setUser(null);
     }
     setIsReady(true);
   }, []);
 
-  const handleUserLogin = (user: User) => {
-    setItem("user", JSON.stringify(user));
+  const handleUserLogin = (user: UserResponse) => {
+    setLocalStorage(user);
     setUser(user);
   };
 
   const login = async (data: LoginDTO) => {
-    const userResponse = await loginRequest(data);
+    const userResponse: UserResponse = await loginRequest(data);
     handleUserLogin(userResponse);
   };
 
@@ -51,7 +49,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const logout = () => {
-    removeItem("user");
+    removeUser();
     setUser(null);
   };
 
