@@ -1,25 +1,25 @@
+import DarkModeRoundedIcon from "@mui/icons-material/DarkModeRounded";
+import LightModeRoundedIcon from "@mui/icons-material/LightModeRounded";
+import Box from "@mui/joy/Box";
+import Button from "@mui/joy/Button";
+import CssBaseline from "@mui/joy/CssBaseline";
+import Divider from "@mui/joy/Divider";
+import FormControl from "@mui/joy/FormControl";
+import FormLabel, { formLabelClasses } from "@mui/joy/FormLabel";
+import GlobalStyles from "@mui/joy/GlobalStyles";
+import IconButton, { IconButtonProps } from "@mui/joy/IconButton";
+import Input from "@mui/joy/Input";
+import Link from "@mui/joy/Link";
+import Stack from "@mui/joy/Stack";
+import Typography from "@mui/joy/Typography";
+import { CssVarsProvider, useColorScheme } from "@mui/joy/styles";
 import React, { ChangeEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { LoginDTO } from "../types";
-import {CssVarsProvider,useColorScheme,} from "@mui/joy/styles";
-import GlobalStyles from "@mui/joy/GlobalStyles";
-import CssBaseline from "@mui/joy/CssBaseline";
-import Box from "@mui/joy/Box";
-import Button from "@mui/joy/Button";
-import Divider from "@mui/joy/Divider";
-import FormControl from "@mui/joy/FormControl";
-import FormLabel, { formLabelClasses } from "@mui/joy/FormLabel";
-import IconButton, { IconButtonProps } from "@mui/joy/IconButton";
-import Link from "@mui/joy/Link";
-import Input from "@mui/joy/Input";
-import Typography from "@mui/joy/Typography";
-import Stack from "@mui/joy/Stack";
-import DarkModeRoundedIcon from "@mui/icons-material/DarkModeRounded";
-import LightModeRoundedIcon from "@mui/icons-material/LightModeRounded";
 
 interface FormElements extends HTMLFormControlsCollection {
-  email: HTMLInputElement;
+  name: HTMLInputElement;
   password: HTMLInputElement;
   persistent: HTMLInputElement;
 }
@@ -62,7 +62,7 @@ function ColorSchemeToggle(props: IconButtonProps) {
 const LogIn: React.FC = () => {
   const { login } = useAuth();
   const [loginData, setLoginData] = useState<LoginDTO>({
-    email: "",
+    name: "",
     password: "",
   });
 
@@ -90,10 +90,10 @@ const LogIn: React.FC = () => {
       <GlobalStyles
         styles={{
           ":root": {
-            "--Collapsed-breakpoint": "769px", 
-            "--Cover-width": "50vw", 
+            "--Collapsed-breakpoint": "769px",
+            "--Cover-width": "50vw",
             "--Form-maxWidth": "800px",
-            "--Transition-duration": "0.4s", 
+            "--Transition-duration": "0.4s",
           },
         }}
       />
@@ -125,7 +125,7 @@ const LogIn: React.FC = () => {
             px: 2,
           }}
         >
-            <ColorSchemeToggle />
+          <ColorSchemeToggle />
           <Box
             component="main"
             sx={{
@@ -178,11 +178,11 @@ const LogIn: React.FC = () => {
             <Stack gap={4} sx={{ mt: 2 }}>
               <form onSubmit={handleLogin}>
                 <FormControl required>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>Name</FormLabel>
                   <Input
-                    type="email"
-                    name="email"
-                    value={loginData.email}
+                    type="text"
+                    name="name"
+                    value={loginData.name}
                     onChange={handleData}
                   />
                 </FormControl>

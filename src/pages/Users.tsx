@@ -19,7 +19,7 @@ export default function Users() {
       <h1>Users</h1>
       <>
         {users.length ? (
-          users.map((user) => <UserCard key={user.id} user={user} />)
+          users.map((user) => <UserCard key={user._id} user={user} />)
         ) : (
           <h1>No users registered</h1>
         )}
