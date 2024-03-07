@@ -16,7 +16,7 @@ export async function registerRequest(
   const result: UserResponse = (
     await httpClient.post(`${USERS_ROUTE}/register`, data)
   ).data;
-  return { role: result.role, token: result.token };
+  return { role: result.userData!.role, token: result.token };
 }
 
 export async function getUsers(): Promise<User[]> {

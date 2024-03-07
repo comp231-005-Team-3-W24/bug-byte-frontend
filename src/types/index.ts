@@ -2,7 +2,7 @@ export type User = {
   _id: string;
   name: string;
   email: string;
-  role: "tester" | "developer" | "stakeholder" | "admin";
+  role: "tester" | "developer" | "stakeholder" | "administrator";
 };
 
 export type BugReportCreateDTO = {
@@ -25,11 +25,14 @@ export type RegisterDTO = {
   name: string;
   email: string;
   password: string;
-  role: "tester" | "developer" | "stakeholder" | "admin";
+  role: "tester" | "developer" | "stakeholder" | "administrator";
 };
 
 export type UserResponse = {
-  role: "tester" | "developer" | "stakeholder" | "admin";
+  userData?: {
+    role: "tester" | "developer" | "stakeholder" | "administrator";
+  };
+  role: "tester" | "developer" | "stakeholder" | "administrator";
   token: string;
 };
 

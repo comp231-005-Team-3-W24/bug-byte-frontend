@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth';
-import { RegisterDTO } from '../types';
-import {CssVarsProvider,useColorScheme,} from "@mui/joy/styles";
-import GlobalStyles from "@mui/joy/GlobalStyles";
-import CssBaseline from "@mui/joy/CssBaseline";
+import DarkModeRoundedIcon from "@mui/icons-material/DarkModeRounded";
+import LightModeRoundedIcon from "@mui/icons-material/LightModeRounded";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
+import CssBaseline from "@mui/joy/CssBaseline";
 import Divider from "@mui/joy/Divider";
 import FormControl from "@mui/joy/FormControl";
 import FormLabel, { formLabelClasses } from "@mui/joy/FormLabel";
+import GlobalStyles from "@mui/joy/GlobalStyles";
 import IconButton, { IconButtonProps } from "@mui/joy/IconButton";
-import Link from "@mui/joy/Link";
 import Input from "@mui/joy/Input";
-import Typography from "@mui/joy/Typography";
+import Link from "@mui/joy/Link";
 import Stack from "@mui/joy/Stack";
-import DarkModeRoundedIcon from "@mui/icons-material/DarkModeRounded";
-import LightModeRoundedIcon from "@mui/icons-material/LightModeRounded";
+import Typography from "@mui/joy/Typography";
+import { CssVarsProvider, useColorScheme } from "@mui/joy/styles";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
+import { RegisterDTO } from "../types";
 
 interface FormElements extends HTMLFormControlsCollection {
   email: HTMLInputElement;
@@ -62,25 +62,27 @@ function ColorSchemeToggle(props: IconButtonProps) {
 const Register: React.FC = () => {
   const { register } = useAuth();
   const [registerData, setRegisterData] = useState<RegisterDTO>({
-    name: '',
-    email: '',
-    password: '',
-    role: 'tester',
+    name: "",
+    email: "",
+    password: "",
+    role: "tester",
   });
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleRegister = async (e: React.FormEvent<RegisterFormElement>) => {
     e.preventDefault();
     try {
       await register(registerData);
-      navigate('/');
+      navigate("/");
     } catch (error) {
-      setError('Registration failed');
+      setError("Registration failed");
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setRegisterData({ ...registerData, [name]: value });
   };
@@ -91,10 +93,10 @@ const Register: React.FC = () => {
       <GlobalStyles
         styles={{
           ":root": {
-            "--Collapsed-breakpoint": "769px", 
-            "--Cover-width": "50vw", 
+            "--Collapsed-breakpoint": "769px",
+            "--Cover-width": "50vw",
             "--Form-maxWidth": "800px",
-            "--Transition-duration": "0.4s", 
+            "--Transition-duration": "0.4s",
           },
         }}
       />
@@ -126,7 +128,7 @@ const Register: React.FC = () => {
             px: 2,
           }}
         >
-            <ColorSchemeToggle />
+          <ColorSchemeToggle />
           <Box
             component="main"
             sx={{
@@ -177,54 +179,59 @@ const Register: React.FC = () => {
               or
             </Divider>
             <Stack gap={4} sx={{ mt: 2 }}>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleRegister}>
-      <FormControl required>
-      <FormLabel>Name</FormLabel>
-          <Input
-            type="text"
-            id="name"
-            name="name"
-            value={registerData.name}
-            onChange={handleChange}
-          />
-      </FormControl>
-      <FormControl required>
-      <FormLabel>Email</FormLabel>
-      <Input
-            type="email"
-            name="email"
-            value={registerData.email}
-            onChange={handleChange}
-          />
-      </FormControl>
-      <FormControl required>
-      <FormLabel>Password</FormLabel>
-      <Input
-            type="password"
-            name="password"
-            value={registerData.password}
-            onChange={handleChange}
-          />
-      </FormControl>
-      <FormControl required>
-      <FormLabel>Role: </FormLabel>
-          <select id="role" name="role" value={registerData.role} onChange={handleChange}>
-            <option value="tester">Tester</option>
-            <option value="developer">Developer</option>
-            <option value="stakeholder">Stakeholder</option>
-            <option value="admin">Admin</option>
-          </select>
-      </FormControl>
-      <Stack gap={4} sx={{ mt: 2 }}>
+              {error && <p style={{ color: "red" }}>{error}</p>}
+              <form onSubmit={handleRegister}>
+                <FormControl required>
+                  <FormLabel>Name</FormLabel>
+                  <Input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={registerData.name}
+                    onChange={handleChange}
+                  />
+                </FormControl>
+                <FormControl required>
+                  <FormLabel>Email</FormLabel>
+                  <Input
+                    type="email"
+                    name="email"
+                    value={registerData.email}
+                    onChange={handleChange}
+                  />
+                </FormControl>
+                <FormControl required>
+                  <FormLabel>Password</FormLabel>
+                  <Input
+                    type="password"
+                    name="password"
+                    value={registerData.password}
+                    onChange={handleChange}
+                  />
+                </FormControl>
+                <FormControl required>
+                  <FormLabel>Role: </FormLabel>
+                  <select
+                    id="role"
+                    name="role"
+                    value={registerData.role}
+                    onChange={handleChange}
+                  >
+                    <option value="tester">Tester</option>
+                    <option value="developer">Developer</option>
+                    <option value="stakeholder">Stakeholder</option>
+                    <option value="administrator">Administrator</option>
+                  </select>
+                </FormControl>
+                <Stack gap={4} sx={{ mt: 2 }}>
                   <Button type="submit" fullWidth>
                     Register
                   </Button>
-                  </Stack>
-      </form>
-      </Stack>
-      </Box>
-      <Box component="footer" sx={{ py: 3 }}>
+                </Stack>
+              </form>
+            </Stack>
+          </Box>
+          <Box component="footer" sx={{ py: 3 }}>
             <Typography level="body-xs" textAlign="center">
               © Bug Byte {new Date().getFullYear()}
             </Typography>
