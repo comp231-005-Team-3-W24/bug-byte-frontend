@@ -12,6 +12,12 @@ export type BugReportCreateDTO = {
   tester: Tester;
 };
 
+export type CreateProjectDTO = {
+  name: string;
+  description: string;
+  company: string;
+}
+
 type Tester = {
   id: string;
   name: string;

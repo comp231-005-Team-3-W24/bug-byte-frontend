@@ -16,7 +16,7 @@ import { CssVarsProvider, useColorScheme } from "@mui/joy/styles";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
-import { RegisterDTO } from "../types";
+import { RegisterDTO, RolesEnum } from "../types";
 
 interface FormElements extends HTMLFormControlsCollection {
   email: HTMLInputElement;
@@ -65,7 +65,7 @@ const Register: React.FC = () => {
     name: "",
     email: "",
     password: "",
-    role: "tester",
+    role: RolesEnum.tester,
   });
   const [error, setError] = useState("");
   const navigate = useNavigate();
