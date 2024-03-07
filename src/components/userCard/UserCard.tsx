@@ -17,7 +17,7 @@ export default function UserCard({ user }: UserCardProps) {
       <p>Name: {user.name}</p>
       <p>Email: {user.email}</p>
       <p>Role: {user.role}</p>
-      <button onClick={() => handleUser(user.id)}>Edit</button>
+      <button onClick={() => handleUser(user._id)}>Manage Permissions</button>
     </div>
   );
 }

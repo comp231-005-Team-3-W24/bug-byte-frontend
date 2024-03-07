@@ -14,7 +14,7 @@ export default function Navbar() {
       <ul>
         {user ? (
           <>
-            {user.role == "admin" && (
+            {user.role == "administrator" && (
               <li>
                 <Link to="/users">Users</Link>
               </li>

@@ -25,11 +25,10 @@ const BugReportPage: React.FC = () => {
       description: bugReport.description,
       projectId,
       tester: {
-        id: user!.id,
+        id: user!._id,
         name: user!.name
       }
     }
-
     console.log(bugReportData);
   };
 
