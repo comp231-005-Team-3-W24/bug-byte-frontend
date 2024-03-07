@@ -2,13 +2,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./auth/AuthProvider";
 import Navbar from "./components/navbar/Navbar";
 import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
+import BugReport from "./pages/BugReport";
+import CreateProject from "./pages/CreateProject";
 import LogIn from "./pages/Login";
 import ProjectDetails from "./pages/ProjectDetails";
 import Projects from "./pages/Projects";
 import Register from "./pages/Register";
-import Users from "./pages/Users";
 import { UserDetails } from "./pages/UserDetails";
-import BugReport from "./pages/BugReport";
+import Users from "./pages/Users";
 
 function App() {
   return (
@@ -35,6 +36,14 @@ function App() {
             }
           />
           <Route
+            path="/create-project"
+            element={
+              <ProtectedRoute>
+                <CreateProject />
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path="/users"
             element={
               <ProtectedRoute>
@@ -42,20 +51,22 @@ function App() {
               </ProtectedRoute>
             }
           />
-           <Route
+          <Route
             path="/users/:id"
             element={
               <ProtectedRoute>
                 <UserDetails />
               </ProtectedRoute>
             }
-            />
-            <Route  path="/bug-report"
+          />
+          <Route
+            path="/bug-report"
             element={
               <ProtectedRoute>
                 <BugReport />
               </ProtectedRoute>
-            } />
+            }
+          />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

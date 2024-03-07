@@ -2,7 +2,8 @@ export type User = {
   _id: string;
   name: string;
   email: string;
-  role: "tester" | "developer" | "stakeholder" | "administrator";
+  role: RolesEnum;
+  projects?: UserProjectData[];
 };
 
 export type BugReportCreateDTO = {
@@ -10,6 +11,12 @@ export type BugReportCreateDTO = {
   projectId: string;
   tester: Tester;
 };
+
+export type CreateProjectDTO = {
+  name: string;
+  description: string;
+  company: string;
+}
 
 type Tester = {
   id: string;
@@ -25,15 +32,25 @@ export type RegisterDTO = {
   name: string;
   email: string;
   password: string;
-  role: "tester" | "developer" | "stakeholder" | "administrator";
+  role: RolesEnum;
 };
 
+export enum RolesEnum {
+  tester,
+  developer,
+  stakeholder,
+  administrator,
+}
+
 export type UserResponse = {
-  userData?: {
-    role: "tester" | "developer" | "stakeholder" | "administrator";
-  };
-  role: "tester" | "developer" | "stakeholder" | "administrator";
+  userData?: User;
+  role?: RolesEnum;
   token: string;
+};
+
+export type UserProjectData = {
+  project_id: string;
+  project_name: string;
 };
 
 export type Project = {

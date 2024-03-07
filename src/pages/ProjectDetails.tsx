@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
-import { Project } from "../types";
+import { Project, RolesEnum } from "../types";
 
 export default function ProjectDetails() {
   const { user } = useAuth();
@@ -10,7 +10,7 @@ export default function ProjectDetails() {
       <h1>{project.name}</h1>
       <p>Description: {project.description}</p>
       <p>Company: {project.company}</p>
-      {user!.role == "tester" && (
+      {user!.role == RolesEnum.tester && (
         <button>
           <Link to={"/bug-report"} state={project.id}>
             Create Bug Report
