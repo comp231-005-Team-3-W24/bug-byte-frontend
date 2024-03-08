@@ -2,7 +2,7 @@ import axios, { AxiosError, InternalAxiosRequestConfig } from "axios";
 import { getToken } from "../utils/storage";
 
 const httpClient = axios.create({
-  baseURL: "http://localhost:8000/api/",
+  baseURL: "http://localhost:8001/api/",
   headers: {
     "Content-Type": "application/json",
   },
