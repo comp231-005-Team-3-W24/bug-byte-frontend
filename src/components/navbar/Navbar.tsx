@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/GrayLogo.png";
 import { useAuth } from "../../hooks/useAuth";
 import "./index.css";
+import { RolesEnum } from "../../types";
 export default function Navbar() {
   const { user, logout } = useAuth();
 
@@ -14,15 +15,14 @@ export default function Navbar() {
       <ul>
         {user ? (
           <>
-            {user.role == "administrator" && (
+            {user.role == RolesEnum.administrator && (
               <li>
                 <Link to="/users">Users</Link>
               </li>
             )}
             <li>
               <Link to="/">Projects</Link>
-            </li>
-            <li>
+              <>            </>
               <Link to="/login" onClick={logout}>
                 Logout
               </Link>
