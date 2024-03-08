@@ -21,19 +21,29 @@ export default function Navbar() {
               </li>
             )}
             <li>
+              <button>
               <Link to="/">Projects</Link>
-              <>            </>
+              </button> 
+              </li>
+              <li>
+              <button>        
               <Link to="/login" onClick={logout}>
                 Logout
               </Link>
+              </button>
             </li>
           </>
         ) : (
           <>
             <li>
+            <button>
               <Link to="/login">Login</Link>
-              <>            </>
+              </button>
+              </li>
+              <li>
+              <button>  
               <Link to="/register">Register</Link>
+              </button>
             </li>
           </>
         )}
