@@ -10,7 +10,7 @@ nav div {
 
 nav h1 {
   text-align: center;
-  margin-right: 550px;
+  margin-right: 800px;
   width: 33%;
 }
 
@@ -34,5 +34,6 @@ nav ul li {
   padding: 10px;
   display: left;
   text-align: Center;
-  margin-right: 880px;
+  margin-right: 800px;
+  margin-left: -800px;
 }
