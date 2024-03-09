@@ -16,7 +16,7 @@ export type CreateProjectDTO = {
   name: string;
   description: string;
   company: string;
-}
+};
 
 type Tester = {
   id: string;
@@ -36,10 +36,10 @@ export type RegisterDTO = {
 };
 
 export enum RolesEnum {
-  tester,
-  developer,
-  stakeholder,
-  administrator,
+  tester = "tester",
+  developer = "developer",
+  stakeholder = "stakeholder",
+  administrator = "administrator",
 }
 
 export type UserResponse = {
