@@ -10,3 +10,10 @@ export async function getProjectsRequest(): Promise<Project[]> {
 export async function createProject(data: CreateProjectDTO): Promise<void> {
   await httpClient.post(`${PROJECTS_ROUTE}/create`, data);
 }
+
+export async function removeUserFromProjectRequest(
+  userId: string,
+  projectId: string
+) {
+  await httpClient.put(`${PROJECTS_ROUTE}/${userId}/${projectId}`);
+}

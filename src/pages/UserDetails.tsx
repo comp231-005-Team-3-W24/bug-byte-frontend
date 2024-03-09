@@ -1,20 +1,31 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
-import { getProjectsRequest } from "../api/projects";
+import {
+  getProjectsRequest,
+  removeUserFromProjectRequest,
+} from "../api/projects";
 import { Project, User } from "../types";
 
 export function UserDetails() {
   const user: User = useLocation().state;
   const [projects, setProjects] = useState<Project[]>([]);
 
+  async function getProjects() {
+    try {
+      const result = await getProjectsRequest();
+      setProjects(result);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   useEffect(() => {
-    getProjectsRequest()
-      .then((res) => setProjects(res))
-      .catch((err) => console.error(err));
+    getProjects();
   }, []);
 
-  function removeUserFromProject(projectId: string) {
-    alert(`User id ${user._id} removed from project id ${projectId}`);
+  async function removeUserFromProject(projectId: string) {
+    await removeUserFromProjectRequest(user._id, projectId);
+    await getProjects();
   }
 
   function addUserToProject(projectId: string) {
@@ -62,9 +73,9 @@ export function UserDetails() {
         {projects.length ? (
           projects.map((project) => {
             return (
-              <div>
+              <div key={project._id}>
                 <p>{project.name}</p>
-                {renderButton(project.id)}
+                {renderButton(project._id)}
               </div>
             );
           })
