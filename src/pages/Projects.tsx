@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getProjectsRequest } from "../api/projects";
 import ProjectCard from "../components/projectCard/ProjectCard";
-import { Project } from "../types";
+import { useAuth } from "../hooks/useAuth";
+import { Project, RolesEnum } from "../types";
 
 export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
+  const { user } = useAuth();
 
   async function getProjects() {
     const data = await getProjectsRequest();
@@ -19,14 +21,17 @@ export default function Projects() {
   return (
     <>
       <h1>Projects Page</h1>
-      <div>
-        <Link to="/create-project">
-          <button>Create New Project</button>
-        </Link>
-      </div>
+      {user?.role === RolesEnum.administrator && (
+        <div>
+          <Link to="/create-project">
+            <button>Create New Project</button>
+          </Link>
+        </div>
+      )}
+
       <div>
         {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+          <ProjectCard key={project._id} project={project} />
         ))}
       </div>
     </>
