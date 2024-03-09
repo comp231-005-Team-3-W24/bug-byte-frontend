@@ -28,11 +28,17 @@ export default function Projects() {
           </Link>
         </div>
       )}
-
       <div>
-        {projects.map((project) => (
-          <ProjectCard key={project._id} project={project} />
-        ))}
+        {projects.length ? (
+          projects.map((project) => (
+            <ProjectCard key={project._id} project={project} />
+          ))
+        ) : (
+          <>
+            <h2>No projects assigned</h2>
+            <p>Please ask access for an administrator.</p>
+          </>
+        )}
       </div>
     </>
   );
