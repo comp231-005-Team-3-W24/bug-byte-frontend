@@ -6,10 +6,24 @@ export type User = {
   projects?: UserProjectData[];
 };
 
+export type ReportResponse = {
+  description: string;
+  project_id: string;
+  tester: UserIdAndName;
+  severity: string;
+  status: string;
+  stakeholder_responsible: UserIdAndName;
+  dev_responsible: UserIdAndName;
+  media: {
+    image: string[];
+    video: string[];
+  };
+};
+
 export type BugReportCreateDTO = {
   description: string;
   projectId: string;
-  tester: Tester;
+  tester: UserIdAndName;
 };
 
 export type CreateProjectDTO = {
@@ -18,9 +32,9 @@ export type CreateProjectDTO = {
   company: string;
 };
 
-type Tester = {
-  id: string;
-  name: string;
+type UserIdAndName = {
+  user_id: string;
+  user_name: string;
 };
 
 export type LoginDTO = {

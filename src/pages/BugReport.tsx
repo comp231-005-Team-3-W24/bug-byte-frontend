@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
-import { BugReportCreateDTO } from '../types';
-import { useAuth } from '../hooks/useAuth';
-import { useLocation } from 'react-router';
-
-
+import React, { useState } from "react";
+import { useLocation } from "react-router";
+import { useAuth } from "../hooks/useAuth";
+import { BugReportCreateDTO } from "../types";
 
 const BugReportPage: React.FC = () => {
   const [bugReport, setBugReport] = useState({
-    description: '',
+    description: "",
   });
 
   const { user } = useAuth();
@@ -25,10 +23,10 @@ const BugReportPage: React.FC = () => {
       description: bugReport.description,
       projectId,
       tester: {
-        id: user!._id,
-        name: user!.name
-      }
-    }
+        user_id: user!.userData!._id,
+        user_name: user!.userData!.name,
+      },
+    };
     console.log(bugReportData);
   };
 
@@ -42,6 +40,26 @@ const BugReportPage: React.FC = () => {
             type="text"
             id="description"
             name="description"
+            value={bugReport.description}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="images">Images:</label>
+          <input
+            type="file"
+            id="images"
+            name="images"
+            value={bugReport.description}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="images">Videos:</label>
+          <input
+            type="file"
+            id="videos"
+            name="videos"
             value={bugReport.description}
             onChange={handleInputChange}
           />
