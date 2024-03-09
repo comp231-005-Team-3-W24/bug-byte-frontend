@@ -54,10 +54,16 @@ export type UserProjectData = {
 };
 
 export type Project = {
-  id: string;
+  _id: string;
   name: string;
   description: string;
   company: string;
-  usersId: string[];
-  reportsId: string[];
+  users: ProjectUser[];
+  reports: string[];
+};
+
+export type ProjectUser = {
+  user_id: string;
+  user_name: string;
+  _id: string;
 };
