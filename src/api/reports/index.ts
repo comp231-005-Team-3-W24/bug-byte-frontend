@@ -11,3 +11,14 @@ export async function createReport(
   ).data;
   return result;
 }
+
+export async function uploadMedia(
+  reportId: string,
+  formData: FormData
+): Promise<void> {
+  await httpClient.post(`${REPORTS_ROUTE}/upload-media/${reportId}`, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+}
