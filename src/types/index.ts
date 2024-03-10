@@ -1,4 +1,5 @@
 export type ReportResponse = {
+  _id: string;
   description: string;
   project_id: string;
   tester: UserIdAndName;
@@ -74,5 +75,4 @@ export type Project = {
 export type ProjectUser = {
   user_id: string;
   user_name: string;
-  _id: string;
 };
