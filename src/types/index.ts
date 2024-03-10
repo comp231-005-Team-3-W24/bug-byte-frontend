@@ -1,26 +1,33 @@
-export type User = {
+export type ReportResponse = {
   _id: string;
-  name: string;
-  email: string;
-  role: RolesEnum;
-  projects?: UserProjectData[];
+  description: string;
+  project_id: string;
+  tester: UserIdAndName;
+  severity: string;
+  status: string;
+  stakeholder_responsible: UserIdAndName;
+  dev_responsible: UserIdAndName;
+  media: {
+    image: string[];
+    video: string[];
+  };
 };
 
 export type BugReportCreateDTO = {
   description: string;
   projectId: string;
-  tester: Tester;
+  tester: UserIdAndName;
 };
 
 export type CreateProjectDTO = {
   name: string;
   description: string;
   company: string;
-}
+};
 
-type Tester = {
-  id: string;
-  name: string;
+type UserIdAndName = {
+  user_id: string;
+  user_name: string;
 };
 
 export type LoginDTO = {
@@ -36,15 +43,18 @@ export type RegisterDTO = {
 };
 
 export enum RolesEnum {
-  tester,
-  developer,
-  stakeholder,
-  administrator,
+  tester = "tester",
+  developer = "developer",
+  stakeholder = "stakeholder",
+  administrator = "administrator",
 }
 
-export type UserResponse = {
-  userData?: User;
-  role?: RolesEnum;
+export type User = {
+  id: string;
+  name: string;
+  email: string;
+  projects: UserProjectData[];
+  role: RolesEnum;
   token: string;
 };
 
@@ -54,10 +64,15 @@ export type UserProjectData = {
 };
 
 export type Project = {
-  id: string;
+  _id: string;
   name: string;
   description: string;
   company: string;
-  usersId: string[];
-  reportsId: string[];
+  users: ProjectUser[];
+  reports: string[];
+};
+
+export type ProjectUser = {
+  user_id: string;
+  user_name: string;
 };

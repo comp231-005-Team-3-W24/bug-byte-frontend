@@ -1,22 +1,16 @@
-import { LoginDTO, RegisterDTO, User, UserResponse } from "../../types";
+import { LoginDTO, RegisterDTO, User } from "../../types";
 import httpClient from "../httpClient";
 
 const USERS_ROUTE = "/user";
 
-export async function loginRequest(data: LoginDTO): Promise<UserResponse> {
-  const result: UserResponse = (
-    await httpClient.post(`${USERS_ROUTE}/login`, data)
-  ).data;
-  return { role: result.role, token: result.token };
+export async function loginRequest(data: LoginDTO): Promise<User> {
+  const result = (await httpClient.post(`${USERS_ROUTE}/login`, data)).data;
+  return result.data as User;
 }
 
-export async function registerRequest(
-  data: RegisterDTO
-): Promise<UserResponse> {
-  const result: UserResponse = (
-    await httpClient.post(`${USERS_ROUTE}/register`, data)
-  ).data;
-  return { role: result.userData!.role, token: result.token };
+export async function registerRequest(data: RegisterDTO): Promise<User> {
+  const result = (await httpClient.post(`${USERS_ROUTE}/register`, data)).data;
+  return result.data as User;
 }
 
 export async function getUsers(): Promise<User[]> {

@@ -1,11 +1,11 @@
 import React, { createContext, useEffect, useState } from "react";
 import { loginRequest, registerRequest } from "../api/users";
-import { LoginDTO, RegisterDTO, UserResponse } from "../types";
+import { LoginDTO, RegisterDTO, User } from "../types";
 import { getUser, removeUser, setLocalStorage } from "../utils/storage";
 
 interface AuthContextProps {
-  user: UserResponse | null;
-  setUser: (user: UserResponse | null) => void;
+  user: User | null;
+  setUser: (user: User | null) => void;
   login: (data: LoginDTO) => Promise<void>;
   logout: () => void;
   register: (data: RegisterDTO) => Promise<void>;
@@ -20,12 +20,12 @@ export const AuthContext = createContext<AuthContextProps>({
 });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useState<UserResponse | null>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    const user: UserResponse | null = getUser();
-    if (user.role && user.token) {
+    const user: User | null = getUser();
+    if (user?.role && user?.token) {
       setUser(user);
     } else {
       setUser(null);
@@ -33,19 +33,19 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setIsReady(true);
   }, []);
 
-  const handleUserLogin = (user: UserResponse) => {
+  const handleUserLogin = (user: User) => {
     setLocalStorage(user);
     setUser(user);
   };
 
   const login = async (data: LoginDTO) => {
-    const userResponse: UserResponse = await loginRequest(data);
-    handleUserLogin(userResponse);
+    const user: User = await loginRequest(data);
+    handleUserLogin(user);
   };
 
   const register = async (data: RegisterDTO) => {
-    const userResponse = await registerRequest(data);
-    handleUserLogin(userResponse);
+    const authResponse = await registerRequest(data);
+    handleUserLogin(authResponse);
   };
 
   const logout = () => {

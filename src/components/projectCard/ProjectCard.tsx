@@ -10,11 +10,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <div>
-      <h3>{project.name}</h3>
-      <p>{project.description}</p>
+      <h3>Name: {project.name}</h3>
+      <p>Description: {project.description}</p>
       <button
         onClick={() =>
-          navigate(`/project-details/${project.id}`, {
+          navigate(`/project-details/${project._id}`, {
             state: project,
           })
         }

@@ -11,13 +11,13 @@ export default function UserCard({ user }: UserCardProps) {
   function handleUser(id: string) {
     navigate(`/users/${id}`, { state: user });
   }
-
+  // console.log(user);
   return (
-    <div>
+    <>
       <p>Name: {user.name}</p>
       <p>Email: {user.email}</p>
       <p>Role: {user.role}</p>
-      <button onClick={() => handleUser(user._id)}>Manage Permissions</button>
-    </div>
+      <button onClick={() => handleUser(user.id)}>Manage Permissions</button>
+    </>
   );
 }

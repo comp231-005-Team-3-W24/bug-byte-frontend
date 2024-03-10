@@ -5,25 +5,32 @@ import { User } from "../types";
 
 export default function Users() {
   const [users, setUsers] = useState<User[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  async function getAllUsers() {
+    try {
+      const data = await getUsers();
+      setUsers(data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   useEffect(() => {
-    getUsers()
-      .then((res) => {
-        setUsers(res);
-      })
-      .catch((err) => console.error(err));
+    getAllUsers();
+    setLoading(false);
   }, []);
 
   return (
     <div>
       <h1>Users</h1>
-      <>
-        {users.length ? (
-          users.map((user) => <UserCard key={user._id} user={user} />)
-        ) : (
-          <h1>No users registered</h1>
-        )}
-      </>
+      {loading ? (
+        <h2>Loading...</h2>
+      ) : users.length ? (
+        users.map((user) => <UserCard key={user.id} user={user} />)
+      ) : (
+        <h1>No users registered</h1>
+      )}
     </div>
   );
 }
