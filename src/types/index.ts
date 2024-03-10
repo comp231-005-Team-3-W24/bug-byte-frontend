@@ -1,11 +1,3 @@
-export type User = {
-  _id: string;
-  name: string;
-  email: string;
-  role: RolesEnum;
-  projects?: UserProjectData[];
-};
-
 export type ReportResponse = {
   description: string;
   project_id: string;
@@ -56,9 +48,12 @@ export enum RolesEnum {
   administrator = "administrator",
 }
 
-export type UserResponse = {
-  userData?: User;
-  role?: RolesEnum;
+export type User = {
+  id: string;
+  name: string;
+  email: string;
+  projects: UserProjectData[];
+  role: RolesEnum;
   token: string;
 };
 

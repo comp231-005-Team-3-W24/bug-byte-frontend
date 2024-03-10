@@ -1,25 +1,20 @@
-import { UserResponse } from "../../types";
+import { User } from "../../types";
 
-export const setLocalStorage = (result: UserResponse) => {
-  localStorage.setItem("token", result.token);
-  localStorage.setItem("role", result.role);
+export const setLocalStorage = (user: User) => {
+  localStorage.setItem("user", JSON.stringify(user));
 };
 
 export const getToken = () => {
-  return localStorage.getItem("token");
+  return getUser()?.token;
 };
 
-export const getUser = (): UserResponse => {
-  const user = {
-    token: localStorage.getItem("token"),
-    role: localStorage.getItem("role"),
-  } as UserResponse;
+export const getUser = (): User => {
+  const user = JSON.parse(localStorage.getItem("user")!) as User;
   return user;
 };
 
 export const removeUser = () => {
-  localStorage.removeItem("token");
-  localStorage.removeItem("role");
+  localStorage.removeItem("user");
 };
 
 export const clearStorage = () => {
