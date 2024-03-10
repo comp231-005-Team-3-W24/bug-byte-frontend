@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getProjectsRequest } from "../api/projects";
+import { getProjectsByUserId, getProjectsRequest } from "../api/projects";
 import ProjectCard from "../components/projectCard/ProjectCard";
 import { useAuth } from "../hooks/useAuth";
 import { Project, RolesEnum } from "../types";
@@ -10,7 +10,12 @@ export default function Projects() {
   const { user } = useAuth();
 
   async function getProjects() {
-    const data = await getProjectsRequest();
+    let data;
+    if (user?.role === RolesEnum.administrator) {
+      data = await getProjectsRequest();
+    } else {
+      data = await getProjectsByUserId();
+    }
     setProjects(data);
   }
 
@@ -43,13 +48,11 @@ export default function Projects() {
         </div>
       )}
       <div>
-        {projects.length ? (
-          projects.map((project) => (
-            <ProjectCard key={project._id} project={project} />
-          ))
-        ) : (
-          renderMessageEmptyProjects(user!.role)
-        )}
+        {projects.length
+          ? projects.map((project) => (
+              <ProjectCard key={project._id} project={project} />
+            ))
+          : renderMessageEmptyProjects(user!.role)}
       </div>
     </>
   );
