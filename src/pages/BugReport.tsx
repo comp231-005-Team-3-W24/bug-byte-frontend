@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { useLocation } from "react-router";
+import React, { ChangeEvent, useState } from "react";
+import { useLocation, useNavigate } from "react-router";
+import { createReport, uploadMedia } from "../api/reports";
 import { useAuth } from "../hooks/useAuth";
 import { BugReportCreateDTO } from "../types";
 
@@ -7,27 +8,53 @@ const BugReportPage: React.FC = () => {
   const [bugReport, setBugReport] = useState({
     description: "",
   });
+  const [files, setFiles] = useState<FileList | null>(null);
 
   const { user } = useAuth();
-
   const projectId: string = useLocation().state;
+
+  const navigate = useNavigate();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setBugReport({ ...bugReport, [name]: value });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setFiles(e.target.files);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const bugReportData: BugReportCreateDTO = {
-      description: bugReport.description,
-      projectId,
-      tester: {
-        user_id: user!.userData!._id,
-        user_name: user!.userData!.name,
-      },
-    };
-    console.log(bugReportData);
+    try {
+      const bugReportData: BugReportCreateDTO = {
+        description: bugReport.description,
+        projectId,
+        tester: {
+          user_id: user!.id,
+          user_name: user!.name,
+        },
+      };
+
+      const createdReport = await createReport(bugReportData);
+
+      if (!files) {
+        console.error("No file selected for upload");
+        return;
+      }
+      if (createdReport) {
+        const formData = new FormData();
+        for (let i = 0; i < files.length; i++) {
+          formData.append(`file-${i + 1}`, files[i]);
+        }
+        await uploadMedia(createdReport._id, formData);
+      }
+      navigate("/");
+    } catch (error) {
+      console.error("Error creating report:", error);
+    }
   };
 
   return (
@@ -45,25 +72,26 @@ const BugReportPage: React.FC = () => {
           />
         </div>
         <div>
-          <label htmlFor="images">Images:</label>
+          <label htmlFor="media">Select Media (".png, .jpg, or .mp4"):</label>
           <input
             type="file"
-            id="images"
-            name="images"
-            value={bugReport.description}
-            onChange={handleInputChange}
+            onChange={handleFileChange}
+            multiple
+            name="media"
+            accept=".png, .jpg, .mp4"
           />
+          {files && (
+            <div>
+              <p>Selected files:</p>
+              <ul>
+                {Array.from(files).map((file, index) => (
+                  <li key={index}>{file.name}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
-        <div>
-          <label htmlFor="images">Videos:</label>
-          <input
-            type="file"
-            id="videos"
-            name="videos"
-            value={bugReport.description}
-            onChange={handleInputChange}
-          />
-        </div>
+
         <button type="submit">Submit Bug Report</button>
       </form>
     </div>
