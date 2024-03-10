@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/GrayLogo.png";
 import { useAuth } from "../../hooks/useAuth";
-import "./index.css";
 import { RolesEnum } from "../../types";
+import "./index.css";
 export default function Navbar() {
   const { user, logout } = useAuth();
 
@@ -21,28 +21,24 @@ export default function Navbar() {
               </li>
             )}
             <li>
-              <button>
               <Link to="/">Projects</Link>
-              </button> 
-              </li>
-              <li>
-              <button>        
+            </li>
+            <li>
               <Link to="/login" onClick={logout}>
                 Logout
               </Link>
-              </button>
             </li>
           </>
         ) : (
           <>
             <li>
-            <button>
-              <Link to="/login">Login</Link>
+              <button>
+                <Link to="/login">Login</Link>
               </button>
-              </li>
-              <li>
-              <button>  
-              <Link to="/register">Register</Link>
+            </li>
+            <li>
+              <button>
+                <Link to="/register">Register</Link>
               </button>
             </li>
           </>
