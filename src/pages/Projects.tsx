@@ -14,6 +14,20 @@ export default function Projects() {
     setProjects(data);
   }
 
+  function renderMessageEmptyProjects(role: string) {
+    return role === RolesEnum.administrator ? (
+      <>
+        <h2>There are no projects created.</h2>
+        <p>Start by creating a new project.</p>
+      </>
+    ) : (
+      <>
+        <h2>No projects assigned.</h2>
+        <p>Please ask an administrator to give you access.</p>
+      </>
+    );
+  }
+
   useEffect(() => {
     getProjects();
   }, []);
@@ -34,10 +48,7 @@ export default function Projects() {
             <ProjectCard key={project._id} project={project} />
           ))
         ) : (
-          <>
-            <h2>No projects assigned</h2>
-            <p>Please ask access for an administrator.</p>
-          </>
+          renderMessageEmptyProjects(user!.role)
         )}
       </div>
     </>
