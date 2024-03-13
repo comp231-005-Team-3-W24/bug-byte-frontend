@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Project } from "../../types";
+import "./ProjectCard.css";
 
 type ProjectCardProps = {
   project: Project;

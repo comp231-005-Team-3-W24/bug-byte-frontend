@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { Project, RolesEnum } from "../types";
+import "./ProjectDetails.css";
 
 export default function ProjectDetails() {
   const { user } = useAuth();
