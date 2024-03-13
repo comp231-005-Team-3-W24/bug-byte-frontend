@@ -76,10 +76,8 @@ export function UserDetails() {
           {userProjects.length ? (
             userProjects.map((project) => (
               <div key={project._id}>
-                <h3>{project.name}</h3>
-                <button
-                  onClick={() => removeUserFromProject(project._id)}
-                >
+                <p>{project.name}</p>
+                <button onClick={() => removeUserFromProject(project._id)}>
                   Remove user from project
                 </button>
               </div>

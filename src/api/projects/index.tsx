@@ -28,8 +28,8 @@ export async function removeUserFromProjectRequest(
   userId: string,
   projectId: string
 ) {
-  await httpClient.put(
-    `${PROJECTS_ROUTE}/removeUserFromProject/${userId}/${projectId}`,
-    { userId: userId, projectId: projectId }
-  );
+  await httpClient.put(`${PROJECTS_ROUTE}/removeUserFromProject/${projectId}`, {
+    userId: userId,
+    projectId: projectId,
+  });
 }
