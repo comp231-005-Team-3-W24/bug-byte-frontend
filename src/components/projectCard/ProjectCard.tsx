@@ -10,7 +10,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <div className="card-container">
       <h3>Name: {project.name}</h3>
       <p>Description: {project.description}</p>
       <button
