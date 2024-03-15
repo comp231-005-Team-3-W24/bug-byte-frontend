@@ -4,6 +4,7 @@ import { getProjectsByUserId, getProjectsRequest } from "../api/projects";
 import ProjectCard from "../components/projectCard/ProjectCard";
 import { useAuth } from "../hooks/useAuth";
 import { Project, RolesEnum } from "../types";
+import "./Projects.css";
 
 export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -39,9 +40,10 @@ export default function Projects() {
 
   return (
     <>
-      <h1>Projects Page</h1>
+    <div className="container">
+      <h1>Projects Page</h1> </div>
       {user?.role === RolesEnum.administrator && (
-        <div>
+        <div className="container">
           <Link to="/create-project">
             <button>Create New Project</button>
           </Link>

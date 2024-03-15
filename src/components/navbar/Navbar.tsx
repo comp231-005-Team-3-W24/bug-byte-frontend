@@ -11,19 +11,19 @@ export default function Navbar() {
       <div>
         <img src={logo} />
       </div>
-      <h1>Bug Byte</h1>
+      <h1 className="bugbyte">Bug Byte</h1>
       <ul>
         {user ? (
           <>
             {user.role == RolesEnum.administrator && (
-              <li>
+              <li className="format">
                 <Link to="/users">Users</Link>
               </li>
             )}
-            <li>
+            <li className="format2">
               <Link to="/">Projects</Link>
             </li>
-            <li>
+            <li className="rightside">
               <Link to="/login" onClick={logout}>
                 Logout
               </Link>
@@ -31,12 +31,12 @@ export default function Navbar() {
           </>
         ) : (
           <>
-            <li>
+            <li className="removeborder">
               <button>
                 <Link to="/login">Login</Link>
               </button>
             </li>
-            <li>
+            <li className="removeborder">
               <button>
                 <Link to="/register">Register</Link>
               </button>
