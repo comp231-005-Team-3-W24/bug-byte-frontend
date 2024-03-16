@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getProjectsByUserId, getProjectsRequest } from "../api/projects";
-import ProjectCard from "../components/projectCard/ProjectCard";
-import { useAuth } from "../hooks/useAuth";
-import { Project, RolesEnum } from "../types";
+import { getProjectsByUserId, getProjectsRequest } from "../../api/projects";
+import ProjectCard from "../../components/projectCard/ProjectCard";
+import { useAuth } from "../../hooks/useAuth";
+import { Project, RolesEnum } from "../../types";
 import "./Projects.css";
 
 export default function Projects() {
@@ -40,8 +40,9 @@ export default function Projects() {
 
   return (
     <>
-    <div className="container">
-      <h1>Projects Page</h1> </div>
+      <div className="container">
+        <h1>Projects Page</h1>{" "}
+      </div>
       {user?.role === RolesEnum.administrator && (
         <div className="container">
           <Link to="/create-project">
