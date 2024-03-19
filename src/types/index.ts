@@ -13,10 +13,40 @@ export type ReportResponse = {
   };
 };
 
+export enum ReportStatusEnum {
+  pending = "Pending",
+  accepted = "Accepted",
+  rejected = "Rejected",
+  inProgress = "In Progress",
+  completed = "Completed",
+}
+
+export enum ReportsSeverityEnum {
+  low = "Low",
+  medium = "Medium",
+  high = "High",
+}
+
+export type BugReportResponse = {
+  _id: string;
+  description: string;
+  project_id: string;
+  tester: UserIdAndName;
+  severity?: ReportsSeverityEnum;
+  status: ReportStatusEnum;
+  stakeholder_responsible?: UserIdAndName;
+  dev_responsible?: UserIdAndName;
+  media: {
+    image: string[];
+    video: string[];
+  };
+};
+
 export type BugReportCreateDTO = {
   description: string;
-  projectId: string;
+  project_id: string;
   tester: UserIdAndName;
+  status: ReportStatusEnum;
 };
 
 export type CreateProjectDTO = {
@@ -76,3 +106,13 @@ export type ProjectUser = {
   user_id: string;
   user_name: string;
 };
+
+export type assignStakeholderToReportDTO = {
+  stakeholderId: string;
+  status: ReportStatusEnum;
+  severity: ReportsSeverityEnum;
+};
+
+export type assignDeveloperToReportDTO = {
+  devId: string;
+}

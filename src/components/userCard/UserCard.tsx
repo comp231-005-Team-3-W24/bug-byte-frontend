@@ -11,7 +11,6 @@ export default function UserCard({ user }: UserCardProps) {
   function handleUser(id: string) {
     navigate(`/users/${id}`, { state: user });
   }
-  // console.log(user);
   return (
     <>
       <p>Name: {user.name}</p>

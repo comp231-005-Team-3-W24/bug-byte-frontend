@@ -2,17 +2,16 @@ import React, { ChangeEvent, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { createReport, uploadMedia } from "../api/reports";
 import { useAuth } from "../hooks/useAuth";
-import { BugReportCreateDTO } from "../types";
+import { BugReportCreateDTO, ReportStatusEnum } from "../types";
 
-const BugReportPage: React.FC = () => {
+const CreateBugReport: React.FC = () => {
   const [bugReport, setBugReport] = useState({
     description: "",
   });
   const [files, setFiles] = useState<FileList | null>(null);
 
   const { user } = useAuth();
-  const projectId: string = useLocation().state;
-
+  const project_id: string = useLocation().state;
   const navigate = useNavigate();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,27 +30,26 @@ const BugReportPage: React.FC = () => {
     try {
       const bugReportData: BugReportCreateDTO = {
         description: bugReport.description,
-        projectId,
+        project_id,
         tester: {
           user_id: user!.id,
           user_name: user!.name,
         },
+        status: ReportStatusEnum.pending,
       };
 
       const createdReport = await createReport(bugReportData);
 
       if (!files) {
-        console.error("No file selected for upload");
-        return;
-      }
-      if (createdReport) {
+        navigate("/bug-reports", { state: { projectId: project_id } });
+      } else if (createdReport) {
         const formData = new FormData();
         for (let i = 0; i < files.length; i++) {
           formData.append(`file-${i + 1}`, files[i]);
         }
         await uploadMedia(createdReport._id, formData);
       }
-      navigate("/");
+      navigate("/bug-reports", { state: project_id });
     } catch (error) {
       console.error("Error creating report:", error);
     }
@@ -98,4 +96,4 @@ const BugReportPage: React.FC = () => {
   );
 };
 
-export default BugReportPage;
+export default CreateBugReport;

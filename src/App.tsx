@@ -1,15 +1,18 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./auth/AuthProvider";
+import BugReport from "./components/bugReport/BugReport";
 import Navbar from "./components/navbar/Navbar";
 import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
 import Projects from "./pages//Projects/Projects";
-import BugReport from "./pages/BugReport";
+import CreateBugReport from "./pages/CreateBugReport";
 import CreateProject from "./pages/CreateProject";
 import LogIn from "./pages/Login";
 import ProjectDetails from "./pages/ProjectDetails/ProjectDetails";
 import Register from "./pages/Register";
 import { UserDetails } from "./pages/UserDetails";
 import Users from "./pages/Users";
+import BugReportDetails from "./components/bugReportDetails/BugReportDetails";
+import BugReportUpdate from "./components/bugReportUpdate/BugReportUpdate";
 
 function App() {
   return (
@@ -60,10 +63,34 @@ function App() {
             }
           />
           <Route
-            path="/bug-report"
+            path="/create-bug-report"
+            element={
+              <ProtectedRoute>
+                <CreateBugReport />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/bug-reports"
             element={
               <ProtectedRoute>
                 <BugReport />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/bug-reports/details/:bugReportId"
+            element={
+              <ProtectedRoute>
+                <BugReportDetails />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/bug-reports/update/:bugReportId"
+            element={
+              <ProtectedRoute>
+                <BugReportUpdate />
               </ProtectedRoute>
             }
           />
