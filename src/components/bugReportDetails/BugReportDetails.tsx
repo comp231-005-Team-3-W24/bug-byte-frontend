@@ -3,7 +3,6 @@ import { BugReportResponse } from "../../types";
 
 export default function BugReportDetails() {
   const bugReport: BugReportResponse = useLocation().state;
-  console.log(bugReport);
 
   return (
     <>

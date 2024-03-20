@@ -14,7 +14,6 @@ export default function BugReport() {
     const result = await getBugReportsFromProject(project_id);
     setBugReports(result);
     setLoading(false);
-    console.log(JSON.stringify(result));
   };
 
   useEffect(() => {
