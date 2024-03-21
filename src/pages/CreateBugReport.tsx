@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router";
 import { createReport, uploadMedia } from "../api/reports";
 import { useAuth } from "../hooks/useAuth";
 import { BugReportCreateDTO, ReportStatusEnum } from "../types";
+import "./CreateBugReport.css";
 
 const CreateBugReport: React.FC = () => {
   const [bugReport, setBugReport] = useState({
@@ -56,11 +57,11 @@ const CreateBugReport: React.FC = () => {
   };
 
   return (
-    <div>
-      <h2>Create Bug Report</h2>
+    <div className="card">
+      <h2 className="stylename">Create Bug Report</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="description">Description:</label>
+        <div className="card-content">
+          <label className="styledescription" htmlFor="description">Description:</label>
           <input
             type="text"
             id="description"
@@ -69,8 +70,8 @@ const CreateBugReport: React.FC = () => {
             onChange={handleInputChange}
           />
         </div>
-        <div>
-          <label htmlFor="media">Select Media (".png, .jpg, or .mp4"):</label>
+        <div className="card-content">
+          <label className="styledescription" htmlFor="media">Select Media (".png, .jpg, or .mp4"):</label>
           <input
             type="file"
             onChange={handleFileChange}
@@ -90,7 +91,9 @@ const CreateBugReport: React.FC = () => {
           )}
         </div>
 
-        <button type="submit">Submit Bug Report</button>
+        <div className="card-footer">
+          <button className="stylebutton" type="submit">Submit Bug Report</button>
+        </div>
       </form>
     </div>
   );

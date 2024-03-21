@@ -41,3 +41,53 @@ button:hover {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   color: #e6e0e0; 
 }
+
+.center-button{
+  align-items:end;
+}
+
+.card {
+  background-color: #040000;
+  border: 2px solid #007bff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  padding: 20px;
+  width: 300px;
+}
+
+.card-content {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.card-footer {
+  text-align: center;
+}
+
+.action-button {
+  background-color: #026ee1;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.action-button:hover {
+  background-color: #0056b3;
+}
+
+.style-description{
+  font-weight: bold;
+}
+
+.style-company{
+  font-weight: bold;
+}
+
+.action-button{
+  font-weight: bold;
+}
