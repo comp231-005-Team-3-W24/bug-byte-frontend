@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { getUsers } from "../api/users";
-import UserCard from "../components/userCard/UserCard";
-import { User } from "../types";
+import { getUsers } from "../../api/users";
+import UserCard from "../../components/userCard/UserCard";
+import { User } from "../../types";
+import "./UserDetails.css";
 
 export default function Users() {
   const [users, setUsers] = useState<User[]>([]);
@@ -22,15 +23,21 @@ export default function Users() {
   }, []);
 
   return (
-    <div>
+    <>
+    <div className="container">
       <h1>Users</h1>
+    </div>
+
+    
       {loading ? (
         <h2>Loading...</h2>
-      ) : users.length ? (
+      )
+       :
+        users.length ? (
         users.map((user) => <UserCard key={user.id} user={user} />)
       ) : (
         <h1>No users registered</h1>
       )}
-    </div>
+    </>
   );
 }

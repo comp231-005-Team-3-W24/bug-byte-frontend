@@ -12,11 +12,11 @@ export default function UserCard({ user }: UserCardProps) {
     navigate(`/users/${id}`, { state: user });
   }
   return (
-    <>
+    <div className="card-container">
       <p>Name: {user.name}</p>
       <p>Email: {user.email}</p>
       <p>Role: {user.role}</p>
       <button onClick={() => handleUser(user.id)}>Manage Permissions</button>
-    </>
+    </div>
   );
 }
