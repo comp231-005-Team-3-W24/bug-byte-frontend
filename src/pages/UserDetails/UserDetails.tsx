@@ -4,8 +4,10 @@ import {
   assignUserToProjectRequest,
   getProjectsRequest,
   removeUserFromProjectRequest,
-} from "../api/projects";
-import { Project, ProjectUser, User } from "../types";
+} from "../../api/projects";
+import { Project, ProjectUser, User } from "../../types";
+import "./UserDetails.css";
+
 
 export function UserDetails() {
   const user: User = useLocation().state;
@@ -66,11 +68,14 @@ export function UserDetails() {
 
   return (
     <>
+      <div className="card-container">
       <h1>User Details</h1>
       <p>Name: {user.name}</p>
       <p>Email: {user.email}</p>
       <p>Role: {user.role}</p>
-      <div>
+      </div>
+
+      <div className="card-container">
         <h2>Assigned Projects</h2>
         <div>
           {userProjects.length ? (
@@ -87,7 +92,9 @@ export function UserDetails() {
           )}
         </div>
       </div>
-      <div>
+
+
+      <div className="card-container">
         <h2>Available Projects</h2>
         {projects.length ? (
           projects.map((project) => {
@@ -98,7 +105,9 @@ export function UserDetails() {
               </div>
             );
           })
-        ) : (
+        )
+         : 
+        (
           <p>No available projects.</p>
         )}
       </div>

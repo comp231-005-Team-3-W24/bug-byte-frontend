@@ -9,8 +9,8 @@ import CreateProject from "./pages/CreateProject";
 import LogIn from "./pages/Login";
 import ProjectDetails from "./pages/ProjectDetails/ProjectDetails";
 import Register from "./pages/Register";
-import { UserDetails } from "./pages/UserDetails";
-import Users from "./pages/Users";
+import { UserDetails } from "./pages/UserDetails/UserDetails";
+import Users from "./pages/UserDetails/Users";
 import BugReportDetails from "./components/bugReportDetails/BugReportDetails";
 import BugReportUpdate from "./components/bugReportUpdate/BugReportUpdate";
 
