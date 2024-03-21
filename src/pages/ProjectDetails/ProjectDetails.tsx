@@ -7,26 +7,26 @@ export default function ProjectDetails() {
   const { user } = useAuth();
   const project: Project = useLocation().state;
   return (
-    <>
-      <div>
+    <div className="card">
+      <div className="card-content">
         <h1>{project.name}</h1>
-        <p>Description: {project.description}</p>
-        <p>Company: {project.company}</p>
+        <p className="style-description">Description: {project.description}</p>
+        <p className="style-company">Company: {project.company}</p>
         {user!.role == RolesEnum.tester && (
-          <button>
+          <button className="action-button">
             <Link to={"/create-bug-report"} state={project._id}>
               Create Bug Report
             </Link>
           </button>
         )}
       </div>
-      <div>
-        <button>
+      <div className="card-footer">
+        <button className="action-button">
           <Link to={"/bug-reports"} state={project._id}>
             View Bug Reports
           </Link>
         </button>
       </div>
-    </>
+    </div>
   );
 }
