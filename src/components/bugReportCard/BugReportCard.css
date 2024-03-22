@@ -1,0 +1,18 @@
+.styling{
+    font-weight: bold;    
+}
+
+.style-button1{
+    font-weight: bold;
+    display: inline-block;
+    margin:auto ;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 10px; 
+  }
+  
+  .style-button {
+    font-weight: bold;
+  }
