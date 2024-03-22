@@ -3,6 +3,7 @@ import { useLocation } from "react-router";
 import { getBugReportsFromProject } from "../../api/reports";
 import { BugReportResponse } from "../../types";
 import BugReportCard from "../bugReportCard/BugReportCard";
+import "./BugReport.css";
 
 export default function BugReport() {
   const [bugReports, setBugReports] = useState<BugReportResponse[]>([]);
@@ -25,11 +26,12 @@ export default function BugReport() {
   }, []);
 
   return (
-    <>
-      <h1>Bug Reports</h1>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+    <div>
+      <h1 className="title">Bug Reports</h1>
+      <div className="container-style"> 
+      {error && <p className="error-message" style={{ color: "red" }}>{error}</p>}
       {loading ? (
-        <h2>Loading...</h2>
+        <h2 className="loading-message">Loading...</h2>
       ) : bugReports.length ? (
         bugReports.map((bugReport) => (
           <BugReportCard key={bugReport._id} bugReport={bugReport} />
@@ -37,6 +39,7 @@ export default function BugReport() {
       ) : (
         <h1>No bug reports for this project</h1>
       )}
-    </>
+    </div>
+    </div>
   );
 }
