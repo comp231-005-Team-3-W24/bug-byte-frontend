@@ -1,6 +1,6 @@
 body{
   background-color: #000; 
-  color: #e6e0e0; 
+  color: #efe9e9; 
 }
 
 h1 {
@@ -46,7 +46,7 @@ button:hover {
   align-items:end;
 }
 
-.card {
+.card1 {
   background-color: #040000;
   border: 2px solid #007bff;
   border-radius: 10px;
@@ -67,7 +67,7 @@ button:hover {
 
 .action-button {
   background-color: #026ee1;
-  color: #fff;
+  color: #f9f5f5;
   border: none;
   border-radius: 5px;
   padding: 10px 20px;

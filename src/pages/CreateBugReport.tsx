@@ -57,7 +57,7 @@ const CreateBugReport: React.FC = () => {
   };
 
   return (
-    <div className="card">
+    <div className="card1">
       <h2 className="stylename">Create Bug Report</h2>
       <form onSubmit={handleSubmit}>
         <div className="card-content">

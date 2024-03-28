@@ -7,7 +7,7 @@ export default function ProjectDetails() {
   const { user } = useAuth();
   const project: Project = useLocation().state;
   return (
-    <div className="card">
+    <div className="card1">
       <div className="card-content">
         <h1>{project.name}</h1>
         <p className="style-description">Description: {project.description}</p>
