@@ -8,7 +8,7 @@ export default function BugReportDetails() {
   return (
     <div>
       <h1 className="style-BugReportDetails">Bug Report Details</h1>
-    <div className="card">      
+    <div className="card1">      
       <div>
         <h3>{bugReport.description}</h3>
         <p className="styling-BugReportDetails">Tester: {bugReport.tester.user_name}</p>

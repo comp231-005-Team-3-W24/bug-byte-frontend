@@ -13,6 +13,7 @@ import {
   RolesEnum,
   assignStakeholderToReportDTO,
 } from "../../types";
+import "./BugReportUpdate.css";
 
 export default function BugReportUpdate() {
   const bugReport: BugReportResponse = useLocation().state;
@@ -88,7 +89,7 @@ export default function BugReportUpdate() {
             </button>
           </div>
         ) : bugReport.status === ReportStatusEnum.inProgress ? (
-          <button
+          <button 
             onClick={() => handleDeveloperAction(ReportStatusEnum.completed)}
           >
             Completed
@@ -101,10 +102,12 @@ export default function BugReportUpdate() {
   };
 
   return (
-    <>
-      <h1>Update Bug Report</h1>
+    <div className="new-container">
+      <div className="new-card">
+      <h1 className="styling-tittle">Update Bug Report</h1>
       {user?.role === RolesEnum.stakeholder && renderStakeholder()}
       {user?.role === RolesEnum.developer && renderDeveloper()}
-    </>
+    </div>
+    </div>
   );
 }
