@@ -1,18 +1,18 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./auth/AuthProvider";
 import BugReport from "./components/bugReport/BugReport";
+import BugReportDetails from "./components/bugReportDetails/BugReportDetails";
+import BugReportUpdate from "./components/bugReportUpdate/BugReportUpdate";
 import Navbar from "./components/navbar/Navbar";
 import ProtectedRoute from "./components/protectedRoute/ProtectedRoute";
 import Projects from "./pages//Projects/Projects";
 import CreateBugReport from "./pages/CreateBugReport";
-import CreateProject from "./pages/CreateProject";
+import CreateProject from "./pages/CreateProject/CreateProject";
 import LogIn from "./pages/Login";
 import ProjectDetails from "./pages/ProjectDetails/ProjectDetails";
 import Register from "./pages/Register";
 import { UserDetails } from "./pages/UserDetails/UserDetails";
 import Users from "./pages/UserDetails/Users";
-import BugReportDetails from "./components/bugReportDetails/BugReportDetails";
-import BugReportUpdate from "./components/bugReportUpdate/BugReportUpdate";
 
 function App() {
   return (

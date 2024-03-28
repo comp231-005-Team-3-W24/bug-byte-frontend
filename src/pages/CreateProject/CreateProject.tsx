@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { createProject } from "../api/projects";
-import { CreateProjectDTO } from "../types";
+import { createProject } from "../../api/projects";
+import { CreateProjectDTO } from "../../types";
+import "./CreateProject.css";
 
 const CreateProject = () => {
   const [projectData, setProjectData] = useState<CreateProjectDTO>({
@@ -28,11 +29,11 @@ const CreateProject = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <h2>Create Project</h2>
-      <form onSubmit={handleSubmit}>
+      <form id="create-project-form" onSubmit={handleSubmit}>
         {error && <p style={{ color: "red" }}>{error}</p>}
-        <div>
+        <div className="input-container">
           <label htmlFor="name">Name: </label>
           <input
             type="text"
@@ -42,7 +43,7 @@ const CreateProject = () => {
             onChange={handleInputChange}
           />
         </div>
-        <div>
+        <div className="input-container">
           <label htmlFor="name">Company: </label>
           <input
             type="text"
@@ -52,7 +53,7 @@ const CreateProject = () => {
             onChange={handleInputChange}
           />
         </div>
-        <div>
+        <div className="input-container">
           <label htmlFor="name">Description: </label>
           <input
             type="text"
