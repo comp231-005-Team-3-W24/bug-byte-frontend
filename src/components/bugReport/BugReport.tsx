@@ -28,7 +28,6 @@ export default function BugReport() {
   return (
     <div>
       <h1 className="title">Bug Reports</h1>
-      <div className="container-style"> 
       {error && <p className="error-message" style={{ color: "red" }}>{error}</p>}
       {loading ? (
         <h2 className="loading-message">Loading...</h2>
@@ -39,7 +38,6 @@ export default function BugReport() {
       ) : (
         <h1>No bug reports for this project</h1>
       )}
-    </div>
     </div>
   );
 }

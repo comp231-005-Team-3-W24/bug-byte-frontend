@@ -11,12 +11,12 @@ export default function BugReportCard({ bugReport }: BugReportCardProps) {
   const { user } = useAuth();
   return (
     <>
-    <div className="bug-report-details">
+    <div className="card-container">
       <p className="styling">Description: {bugReport.description}</p>
       <p className="styling">Tester: {bugReport.tester.user_name}</p>
       <p className="styling">Status: {bugReport.status}</p>
       {bugReport.severity && <p className="styling">Severity: {bugReport.severity}</p>}
-      <div>
+        
         <div className="button-container">
         <button className="style-button">
           <Link to={`/bug-reports/details/${bugReport._id}`} state={bugReport}>
@@ -32,7 +32,7 @@ export default function BugReportCard({ bugReport }: BugReportCardProps) {
           </button>
         )}
       </div>
-      </div>
+
       </div>
     </>
   );
