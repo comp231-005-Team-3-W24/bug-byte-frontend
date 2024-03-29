@@ -6,10 +6,9 @@ export default function BugReportDetails() {
   const bugReport: BugReportResponse = useLocation().state;
 
   return (
-    <div>
+    <>
       <h1 className="style-BugReportDetails">Bug Report Details</h1>
     <div className="card1">      
-      <div>
         <h3>{bugReport.description}</h3>
         <p className="styling-BugReportDetails">Tester: {bugReport.tester.user_name}</p>
         <p className="styling-BugReportDetails">
@@ -40,7 +39,7 @@ export default function BugReportDetails() {
           bugReport.media.video.map((url) => (
             <div key={url}>
               <a href={url} target="_blank">
-                <video width="320" height="240" autoPlay muted>
+                <video width="305" height="240" autoPlay muted>
                   <source src={url} type="video/mp4" />
                 </video>
               </a>
@@ -50,7 +49,6 @@ export default function BugReportDetails() {
           <p>There are no videos for this bug report</p>
         )}
       </div>
-      </div>  
-      </div>  
+      </>  
   );
 }

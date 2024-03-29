@@ -51,16 +51,19 @@ export default function BugReportUpdate() {
               <option value={ReportsSeverityEnum.medium}>Medium</option>
               <option value={ReportsSeverityEnum.high}>High</option>
             </select>
-            <button
+            
+            <div className="button-container">
+            <button className="style-button"
               onClick={() => handleStakeholderAction(ReportStatusEnum.accepted)}
             >
               Accept
             </button>
-            <button
+            <button className="style-button"
               onClick={() => handleStakeholderAction(ReportStatusEnum.rejected)}
             >
               Reject
             </button>
+          </div>
           </div>
         ) : (
           <p>There are no actions needed for this bug report now.</p>
