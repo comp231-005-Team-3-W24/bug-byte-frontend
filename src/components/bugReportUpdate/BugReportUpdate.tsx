@@ -41,7 +41,7 @@ export default function BugReportUpdate() {
       <>
         {bugReport.status == ReportStatusEnum.pending ? (
           <div>
-            <label htmlFor="selectInput"></label>
+            <label htmlFor="selectInput">Priority: </label>
             <select
               id="selectInput"
               value={severity}
@@ -51,19 +51,25 @@ export default function BugReportUpdate() {
               <option value={ReportsSeverityEnum.medium}>Medium</option>
               <option value={ReportsSeverityEnum.high}>High</option>
             </select>
-            
+
             <div className="button-container">
-            <button className="style-button"
-              onClick={() => handleStakeholderAction(ReportStatusEnum.accepted)}
-            >
-              Accept
-            </button>
-            <button className="style-button"
-              onClick={() => handleStakeholderAction(ReportStatusEnum.rejected)}
-            >
-              Reject
-            </button>
-          </div>
+              <button
+                className="style-button"
+                onClick={() =>
+                  handleStakeholderAction(ReportStatusEnum.accepted)
+                }
+              >
+                Accept
+              </button>
+              <button
+                className="style-button"
+                onClick={() =>
+                  handleStakeholderAction(ReportStatusEnum.rejected)
+                }
+              >
+                Reject
+              </button>
+            </div>
           </div>
         ) : (
           <p>There are no actions needed for this bug report now.</p>
@@ -92,7 +98,7 @@ export default function BugReportUpdate() {
             </button>
           </div>
         ) : bugReport.status === ReportStatusEnum.inProgress ? (
-          <button 
+          <button
             onClick={() => handleDeveloperAction(ReportStatusEnum.completed)}
           >
             Completed
@@ -107,10 +113,10 @@ export default function BugReportUpdate() {
   return (
     <div className="new-container">
       <div className="new-card">
-      <h1 className="styling-tittle">Update Bug Report</h1>
-      {user?.role === RolesEnum.stakeholder && renderStakeholder()}
-      {user?.role === RolesEnum.developer && renderDeveloper()}
-    </div>
+        <h1 className="styling-tittle">Update Bug Report</h1>
+        {user?.role === RolesEnum.stakeholder && renderStakeholder()}
+        {user?.role === RolesEnum.developer && renderDeveloper()}
+      </div>
     </div>
   );
 }
