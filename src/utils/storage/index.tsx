@@ -1,6 +1,7 @@
 import { User } from "../../types";
 
 export const setLocalStorage = (user: User) => {
+  if (!user) return;
   localStorage.setItem("user", JSON.stringify(user));
 };
 
@@ -10,6 +11,9 @@ export const getToken = () => {
 
 export const getUser = (): User => {
   const user = JSON.parse(localStorage.getItem("user")!) as User;
+  if (!user) {
+    removeUser();
+  }
   return user;
 };
 
