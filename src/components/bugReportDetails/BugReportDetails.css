@@ -1,0 +1,32 @@
+.style-BugReportDetails{
+    text-align: center;
+}
+
+.card1 {
+  margin-left: 85px;
+  margin-right: 20px;
+  width: 310px;
+  background-color: #000000;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 25px;
+  margin-top: 50px;
+  border: 2px solid #007bff;
+  display:inline-block;
+  flex-direction:row;
+  align-items:center;    
+  text-align: left;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  }
+
+  .styling-BugReportDetails{
+    font-weight: bold;
+  }
+  
+  .card1 h3 {
+    text-align: center;
+  }
+  
+
+  

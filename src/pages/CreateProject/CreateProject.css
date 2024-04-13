@@ -1,0 +1,14 @@
+#create-project-form {
+  border: 1px solid #007bff;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  width: 30%;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}

@@ -1,0 +1,30 @@
+.new-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 70px;
+  }
+  
+  .new-card {
+    background-color: #040000;
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+  }
+  
+  .styling-title {
+    text-align: center;
+  }
+
+  .style-button {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .button-container {
+    text-align: center;
+    margin-top: 10px; 
+  }

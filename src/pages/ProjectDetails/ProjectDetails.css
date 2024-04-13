@@ -1,0 +1,93 @@
+body{
+  background-color: #000; 
+  color: #efe9e9; 
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  color: #e6e0e0; 
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  color: #e6e0e0; 
+}
+
+.company {
+  font-style: italic;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  color: #e6e0e0; 
+}
+
+button {
+  background-color: #026ee1;
+  color: #e6e0e0; 
+  border: 2px solid #007bff; 
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  color: #e6e0e0; 
+}
+
+button:hover {
+  background-color: #026ee1;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  color: #e6e0e0; 
+}
+
+.center-button{
+  align-items:end;
+}
+
+.card1 {
+  background-color: #040000;
+  border: 2px solid #007bff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  padding: 20px;
+  width: 300px;
+}
+
+.card-content {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.card-footer {
+  text-align: center;
+}
+
+.action-button {
+  background-color: #026ee1;
+  color: #f9f5f5;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.action-button:hover {
+  background-color: #0056b3;
+}
+
+.style-description{
+  font-weight: bold;
+}
+
+.style-company{
+  font-weight: bold;
+}
+
+.action-button{
+  font-weight: bold;
+}
